@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register.RegistroActivity"
+    android:background="#202732">
+
+    <TextView
+        android:id="@+id/tvRegisterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/imageView2Register"
+        android:layout_width="276dp"
+        android:layout_height="255dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegisterTitle"
+        app:srcCompat="@drawable/dezer" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNombreRegister"
+        android:layout_width="368dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:hint="Nombre"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2Register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="HardcodedText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietNombreRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_person"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/white"
+            tools:ignore="RtlHardcoded" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilApellidosRegister"
+        android:layout_width="368dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:hint="Apellidos"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/tilNombreRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="HardcodedText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietApellidosRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_person"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/white"
+            tools:ignore="RtlHardcoded" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmailRegister"
+        android:layout_width="368dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:hint="Correo Electrónico"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/tilApellidosRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="HardcodedText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietEmailRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_email"
+            android:ems="10"
+            android:inputType="text|textEmailAddress"
+            android:textColor="@color/white"
+            tools:ignore="RtlHardcoded" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPasswordRegister"
+        android:layout_width="368dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:hint="Contraseña"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmailRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="HardcodedText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietPasswordRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_lock"
+            android:ems="10"
+            android:inputType="text|textPassword"
+            android:textColor="@color/white"
+            tools:ignore="RtlHardcoded" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/tvAlreadyRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? "
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilPasswordRegister"
+        tools:ignore="HardcodedText" />
+
+
+    <TextView
+        android:id="@+id/tvLoginRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Login"
+        android:textColor="#00ff00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toEndOf="@+id/tvAlreadyRegister"
+        app:layout_constraintTop_toBottomOf="@id/tilPasswordRegister"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="196dp"
+        android:layout_height="69dp"
+        android:background="#303F9F"
+        android:text="Registrarse"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginRegister"
+
+        tools:ignore="HardcodedText" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

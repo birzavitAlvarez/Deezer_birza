@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#303F9F" /> <!-- Cambia el color a tu preferencia, en este caso, azul oscuro -->
+    <corners android:radius="100dp" /> <!-- Ajusta el valor para el tamaño deseado -->
+</shape>
+
+
