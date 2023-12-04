@@ -1,3 +1,7 @@
 package com.example.deezer.Musica
 
-class MusicResponse : ArrayList<MusicResponseItem>()
+data class MusicResponse(
+    val statusMessage: String,
+    val status: Int,
+    val `data`: Data
+)

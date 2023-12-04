@@ -2,12 +2,13 @@ package com.example.deezer.API
 
 import com.example.deezer.Login.LoginRequest
 import com.example.deezer.Login.LoginResponse
-import com.example.deezer.Musica.MusicResponse
 import com.example.deezer.Register.RegisterBody
+import com.example.deezer.Musica.MusicResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -18,7 +19,11 @@ interface ApiService {
     @POST("api/usuarios/registrar")
     suspend fun registerUser(@Body registerBody : RegisterBody)
 
-    @GET("api/music/listar")
+    @GET("api/music/listmusic")
     suspend fun listarMusic(): Response<MusicResponse>
+
+    // Filtrar por razon_social
+    @GET("api/music/busqueda")
+    suspend fun buscarMusic(@Query("cancion") cancion: String): Response<MusicResponse>
 
 }

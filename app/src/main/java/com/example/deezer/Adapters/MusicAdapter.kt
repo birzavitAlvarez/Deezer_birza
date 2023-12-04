@@ -3,10 +3,10 @@ package com.example.deezer.Adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.deezer.Musica.MusicResponseItem
+import com.example.deezer.Musica.Result
 import com.example.deezer.R
 
-class MusicAdapter(private val itemsList: MutableList<MusicResponseItem>) : RecyclerView.Adapter<MusicViewHolder>() {
+class MusicAdapter(private val itemsList: MutableList<Result>) : RecyclerView.Adapter<MusicViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.song_row_item, parent, false)
@@ -20,7 +20,7 @@ class MusicAdapter(private val itemsList: MutableList<MusicResponseItem>) : Recy
 
     override fun getItemCount() = itemsList.size
 
-    fun updateList(newData: List<MusicResponseItem>) {
+    fun updateList(newData: List<Result>) {
         itemsList.clear()
         itemsList.addAll(newData)
         notifyDataSetChanged()

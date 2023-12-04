@@ -111,7 +111,6 @@ class RegistroActivity : AppCompatActivity() {
             val intent = Intent(this@RegistroActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
-            //ShowMessagePositive()
         }
         Toast.makeText(this, "REGISTRO EXITOSO, INICIA SESION", Toast.LENGTH_SHORT).show()
 

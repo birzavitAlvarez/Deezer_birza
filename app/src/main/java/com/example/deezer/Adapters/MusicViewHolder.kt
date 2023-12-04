@@ -3,12 +3,12 @@ package com.example.deezer.Adapters
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.deezer.Musica.MusicResponseItem
 import com.example.deezer.databinding.SongRowItemBinding
 //
 import android.media.MediaPlayer
 import android.os.Handler
 import android.widget.SeekBar
+import com.example.deezer.Musica.Result
 import com.example.deezer.R
 import java.util.concurrent.TimeUnit
 
@@ -18,7 +18,7 @@ class MusicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var mediaPlayer: MediaPlayer? = null
     private val handler = Handler()
 
-    fun bind (query: MusicResponseItem){
+    fun bind (query: Result){
         Glide.with(itemView.context).load(query.img_music).into(binding.ivPhotoItemMusic)
         binding.tvNombreMusicaItemMusic.text = query.titulo_music
         binding.tvArtistaItemMusic.text = query.artista

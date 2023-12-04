@@ -4,21 +4,25 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.deezer.Adapters.MusicAdapter
 import com.example.deezer.Login.LoginActivity
 //
-import com.example.deezer.Musica.MusicResponseItem
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import com.example.deezer.databinding.ActivityPrincipalBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.deezer.API.RetrofitClient.apiService
+import com.example.deezer.Login.UserData
+import com.example.deezer.Musica.Result //
+import java.util.Locale
 
 
-class PrincipalActivity : AppCompatActivity() {
+class PrincipalActivity : AppCompatActivity(),OnQueryTextListener {//
 
     private var searchRunnable: Runnable? = null
     private lateinit var mediaPlayer: MediaPlayer
@@ -26,7 +30,14 @@ class PrincipalActivity : AppCompatActivity() {
     private var binding: ActivityPrincipalBinding? = null
 
     private lateinit var adapter: MusicAdapter
-    private val datitos = mutableListOf<MusicResponseItem>()
+    private val datitos = mutableListOf<Result>()
+
+    //
+    var id_usuarios: Int? = null
+    var nombre:String? = null
+    var apellidos:String? = null
+    var usuario: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +46,22 @@ class PrincipalActivity : AppCompatActivity() {
         //
         initRecyclerView()
         listaAlEntrar()
+        val userData = intent.getSerializableExtra("userData") as? UserData
+        if (userData != null) {
+            id_usuarios = userData.id_usuarios
+            nombre = userData.nombre
+            apellidos = userData.apellidos
+            usuario = userData.usuario
+        }
+
+        binding?.tvUserName?.text = nombre
+
+        binding?.svMusic?.setOnQueryTextListener(this)
+
+
+        binding?.ibSupport?.setOnClickListener {
+
+        }
 
         binding?.ibLogout?.setOnClickListener {
             logout()
@@ -48,9 +75,9 @@ class PrincipalActivity : AppCompatActivity() {
             val response0 = request0.body()
             runOnUiThread {
                 if (request0.isSuccessful) {
-                    val dataUsuario = response0 ?: emptyList()
+                    val dataMusic = response0?.data?.results ?: emptyList<Result>()
                     datitos.clear()
-                    datitos.addAll(dataUsuario)
+                    datitos.addAll(dataMusic)
                     adapter.notifyDataSetChanged()
                 } else { showError() }
             }
@@ -75,6 +102,53 @@ class PrincipalActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (!query.isNullOrEmpty()){
+            searchByItem(query.lowercase(Locale.ROOT))
+        }
+        return true
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun searchByItem(query: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val request0 = apiService.buscarMusic(query)
+            val response0 = request0.body()
+            runOnUiThread {
+                if (request0.isSuccessful) {
+                    val dataMusic = response0?.data?.results ?: emptyList<Result>()
+                    datitos.clear()
+                    datitos.addAll(dataMusic)
+                    adapter.notifyDataSetChanged()
+                } else {
+                    showError()
+                }
+                hideKeyboard()
+            }
+        }
+    }
+
+
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
+    private fun performSearch(query: String?) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = apiService.buscarMusic(query ?: "").body()
+            runOnUiThread {
+                if (response != null) {
+                    adapter.notifyDataSetChanged()
+                } else { showError() }
+            }
+        }
+    }
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding?.ActivityPrincipalPadre?.windowToken,0)
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 
 }
