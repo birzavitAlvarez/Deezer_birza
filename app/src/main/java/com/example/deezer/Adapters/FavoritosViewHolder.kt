@@ -20,11 +20,11 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
-import com.example.deezer.Musica.Result
+import com.example.deezer.Favoritos.Result
 import com.example.deezer.R
 import java.util.concurrent.TimeUnit
 
-class MusicViewHolder(itemView: View, private val id_usuarios: Int) : RecyclerView.ViewHolder(itemView) {
+class FavoritosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val binding: SongRowItemBinding = SongRowItemBinding.bind(itemView)
     private var mediaPlayer: MediaPlayer? = null
@@ -34,14 +34,10 @@ class MusicViewHolder(itemView: View, private val id_usuarios: Int) : RecyclerVi
         const val REQUEST_WRITE_STORAGE = 123
     }
 
-    fun bind (query: Result,context: Context , id_usuarios: Int){
+    fun bind (query: Result,context: Context){
         Glide.with(itemView.context).load(query.img_music).into(binding.ivPhotoItemMusic)
         binding.tvNombreMusicaItemMusic.text = query.titulo_music
         binding.tvArtistaItemMusic.text = query.artista
-
-        binding.ibFavorite.setOnClickListener {
-            Toast.makeText(context, "id de usuario $id_usuarios", Toast.LENGTH_SHORT).show()
-        }
 
         mediaPlayer = MediaPlayer().apply {
             setDataSource(query.audio_music)

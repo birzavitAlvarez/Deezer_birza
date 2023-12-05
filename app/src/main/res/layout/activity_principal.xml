@@ -14,67 +14,82 @@
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
         android:text="@string/men_principal"
         android:textColor="@android:color/white"
         android:textSize="40sp"
-        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ibLybrari"
+    <ImageButton
+        android:id="@+id/ibRefresh"
         android:layout_width="40dp"
         android:layout_height="43dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="24dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toEndOf="@+id/tvTitulo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/ibLibrary"
+        android:layout_width="40dp"
+        android:layout_height="43dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/library_icon"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="38dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
-        tools2:ignore="ContentDescription,MissingConstraints" />
+        tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ibAddPlayList"
         android:layout_width="40dp"
         android:layout_height="43dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/create_playlist_icon"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/ibLibrary"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
-        app:layout_constraintStart_toEndOf="@+id/ibLybrari"
-        tools2:ignore="ContentDescription,MissingConstraints" />
+        tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ibPlayList"
         android:layout_width="40dp"
         android:layout_height="43dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/view_playlist_icon"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
         app:layout_constraintStart_toEndOf="@+id/ibAddPlayList"
-        tools2:ignore="ContentDescription,MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+        tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ibPhotoIcon"
         android:layout_width="42dp"
         android:layout_height="38dp"
         android:layout_alignParentEnd="true"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/user"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_person"
         app:layout_constraintStart_toEndOf="@+id/ibPlayList"
-        tools2:ignore="ContentDescription,MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+        tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ibLogout"
         android:layout_width="40dp"
         android:layout_height="43dp"
@@ -89,19 +104,19 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
         tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ibSupport"
         android:layout_width="40dp"
         android:layout_height="43dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/support_icon"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
         app:layout_constraintStart_toEndOf="@+id/ibLogout"
-        tools2:ignore="ContentDescription,MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+        tools2:ignore="ContentDescription,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
     <TextView
@@ -143,7 +158,7 @@
         android:layout_marginTop="90dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibLybrari"/>
+        app:layout_constraintTop_toBottomOf="@+id/ibLibrary"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
