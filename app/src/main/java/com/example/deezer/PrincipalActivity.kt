@@ -64,7 +64,7 @@ class PrincipalActivity : AppCompatActivity(),OnQueryTextListener {//
         }
 
         initRecyclerView(id_usuarios!!)
-        listaAlEntrar()
+        listaAlEntrar(id_usuarios!!)
 
         binding?.tvUserName?.text = nombre
 
@@ -88,7 +88,7 @@ class PrincipalActivity : AppCompatActivity(),OnQueryTextListener {//
         }
 
         binding?.ibRefresh?.setOnClickListener {
-            listaAlEntrar()
+            listaAlEntrar(id_usuarios!!)
         }
 
         binding?.ibLibrary?.setOnClickListener {
@@ -141,9 +141,9 @@ class PrincipalActivity : AppCompatActivity(),OnQueryTextListener {//
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun listaAlEntrar() {
+    private fun listaAlEntrar(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val request0 = apiService.listarMusic()
+            val request0 = apiService.listarMusic(id)
             val response0 = request0.body()
             runOnUiThread {
                 if (request0.isSuccessful) {
@@ -178,15 +178,15 @@ class PrincipalActivity : AppCompatActivity(),OnQueryTextListener {//
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (!query.isNullOrEmpty()){
-            searchByItem(query.lowercase(Locale.ROOT))
+            searchByItem(id_usuarios!! ,query.lowercase(Locale.ROOT))
         }
         return true
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun searchByItem(query: String) {
+    private fun searchByItem(id:Int, query: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val request0 = apiService.buscarMusic(query)
+            val request0 = apiService.buscarMusic(id,query)
             val response0 = request0.body()
             runOnUiThread {
                 if (request0.isSuccessful) {
@@ -202,18 +202,6 @@ class PrincipalActivity : AppCompatActivity(),OnQueryTextListener {//
         }
     }
 
-
-    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
-    private fun performSearch(query: String?) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = apiService.buscarMusic(query ?: "").body()
-            runOnUiThread {
-                if (response != null) {
-                    adapter.notifyDataSetChanged()
-                } else { showError() }
-            }
-        }
-    }
     private fun hideKeyboard() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding?.ActivityPrincipalPadre?.windowToken,0)

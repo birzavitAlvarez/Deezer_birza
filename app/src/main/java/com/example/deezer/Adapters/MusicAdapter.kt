@@ -20,10 +20,13 @@ class MusicAdapter(private val itemsList: MutableList<Result>, private val id_us
 
     override fun getItemCount() = itemsList.size
 
-    fun updateList(newData: List<Result>) {
-        itemsList.clear()
-        itemsList.addAll(newData)
-        notifyDataSetChanged()
-    }
-
+//    fun updateList(newData: List<Result>) {
+//        itemsList.clear()
+//        itemsList.addAll(newData)
+//        notifyDataSetChanged()
+//    }
+//    fun updateItem(position: Int, newItem: Result) {
+//        itemsList[position] = newItem
+//        notifyItemChanged(position)
+//    }
 }

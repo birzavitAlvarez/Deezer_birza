@@ -9,5 +9,6 @@ data class Result(
     val titulo_music: String,
     val id_usuarios: Int,
     val nombre: String,
-    val usuario: String
+    val usuario: String,
+    var liked: Int
 )

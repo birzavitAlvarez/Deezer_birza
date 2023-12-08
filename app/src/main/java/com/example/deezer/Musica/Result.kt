@@ -6,5 +6,6 @@ data class Result(
     val audio_music: String,
     val genero_music: String,
     val img_music: String,
-    val titulo_music: String
+    val titulo_music: String,
+    var liked: Int
 )
